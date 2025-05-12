@@ -67,9 +67,8 @@
                             <Image
                                 x:Name="Icon"
                                 Source="{TemplateBinding ActualIcon}"
-                                Width="{DynamicResource {x:Static SystemParameters.SmallIconWidthKey}}"
-                                Height="{DynamicResource {x:Static SystemParameters.SmallIconHeightKey}}"
-                                Margin="10,0,0,0"
+                                Height="32"
+                                Margin="8,0,8,0"
                                 VerticalAlignment="Center"
                                 Visibility="Collapsed" />
 

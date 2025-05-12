@@ -122,9 +122,7 @@ namespace ModernWpf.Controls.Primitives
         #region Icon
 
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register(
-                nameof(Icon),
-                typeof(ImageSource),
+            TitleBar.IconProperty.AddOwner(
                 typeof(TitleBarControl),
                 new PropertyMetadata(OnIconChanged));
 
