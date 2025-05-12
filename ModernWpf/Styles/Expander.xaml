@@ -13,16 +13,26 @@
                         <StreamGeometry x:Key="ChevronDown">M 18.935547 4.560547 L 19.814453 5.439453 L 10 15.253906 L 0.185547 5.439453 L 1.064453 4.560547 L 10 13.496094 Z</StreamGeometry>
                         <StreamGeometry x:Key="ChevronUp">M 19.091797 14.970703 L 10 5.888672 L 0.908203 14.970703 L 0.029297 14.091797 L 10 4.111328 L 19.970703 14.091797 Z</StreamGeometry>
                     </ControlTemplate.Resources>
-                    <Border Padding="{TemplateBinding Padding}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}">
                         <Grid
                             Background="Transparent"
                             SnapsToDevicePixels="False">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
+                            <ContentPresenter
+                                Margin="0,0,8,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="True" />
                             <local:FontIconFallback
                                 x:Name="arrow"
+                                Grid.Column="1"
+                                Margin="4,0,4,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 FontFamily="{DynamicResource SymbolThemeFontFamily}"
@@ -30,13 +40,6 @@
                                 Data="{StaticResource ChevronDown}"
                                 SnapsToDevicePixels="false"
                                 Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}" />
-                            <ContentPresenter
-                                Grid.Column="1"
-                                Margin="8,0,0,0"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="True" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -66,15 +69,23 @@
                         <StreamGeometry x:Key="ChevronDown">M 18.935547 4.560547 L 19.814453 5.439453 L 10 15.253906 L 0.185547 5.439453 L 1.064453 4.560547 L 10 13.496094 Z</StreamGeometry>
                         <StreamGeometry x:Key="ChevronUp">M 19.091797 14.970703 L 10 5.888672 L 0.908203 14.970703 L 0.029297 14.091797 L 10 4.111328 L 19.970703 14.091797 Z</StreamGeometry>
                     </ControlTemplate.Resources>
-                    <Border Padding="{TemplateBinding Padding}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}">
                         <Grid
                             Background="Transparent"
                             SnapsToDevicePixels="False">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Grid>
+                            <ContentPresenter
+                                Margin="0,0,8,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="True" />
+                            <Grid Grid.Column="1">
                                 <Grid.LayoutTransform>
                                     <TransformGroup>
                                         <TransformGroup.Children>
@@ -94,13 +105,6 @@
                                     SnapsToDevicePixels="false"
                                     Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}" />
                             </Grid>
-                            <ContentPresenter
-                                Grid.Column="1"
-                                Margin="8,0,0,0"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="True" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -130,7 +134,9 @@
                         <StreamGeometry x:Key="ChevronDown">M 18.935547 4.560547 L 19.814453 5.439453 L 10 15.253906 L 0.185547 5.439453 L 1.064453 4.560547 L 10 13.496094 Z</StreamGeometry>
                         <StreamGeometry x:Key="ChevronUp">M 19.091797 14.970703 L 10 5.888672 L 0.908203 14.970703 L 0.029297 14.091797 L 10 4.111328 L 19.970703 14.091797 Z</StreamGeometry>
                     </ControlTemplate.Resources>
-                    <Border Padding="{TemplateBinding Padding}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}">
                         <Grid
                             Background="Transparent"
                             SnapsToDevicePixels="False">
@@ -253,7 +259,10 @@
     <Style x:Key="DefaultExpanderStyle" TargetType="Expander">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="{DynamicResource ExpanderBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="6" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
@@ -271,7 +280,7 @@
                                 x:Name="HeaderSite"
                                 MinWidth="0"
                                 MinHeight="0"
-                                Margin="1"
+                                Margin="0"
                                 Padding="{TemplateBinding Padding}"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -285,14 +294,14 @@
                                 FontStretch="{TemplateBinding FontStretch}"
                                 FontStyle="{TemplateBinding FontStyle}"
                                 FontWeight="{TemplateBinding FontWeight}"
-                                Foreground="{TemplateBinding Foreground}"
+                                Background="{DynamicResource ExpanderHeaderBackground}"
+                                Foreground="{DynamicResource ExpanderHeaderForeground}"
                                 IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                 Style="{StaticResource ExpanderDownHeaderStyle}"
                                 primitives:FocusVisualHelper.UseSystemFocusVisuals="True"
                                 primitives:FocusVisualHelper.FocusVisualMargin="-3" />
                             <ContentPresenter
                                 x:Name="ExpandSite"
-                                Margin="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 DockPanel.Dock="Bottom"

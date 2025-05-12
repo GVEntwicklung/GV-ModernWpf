@@ -21,6 +21,22 @@ namespace ModernWpf.Controls
         {
         }
 
+        #region Transparent
+
+        public static readonly DependencyProperty IsTransparentProperty =
+            DependencyProperty.Register(
+                nameof(IsTransparent),
+                typeof(bool),
+                typeof(DropDownButton));
+
+        public bool IsTransparent
+        {
+            get => (bool)GetValue(IsTransparentProperty);
+            set => SetValue(IsTransparentProperty, value);
+        }
+
+        #endregion
+
         #region CornerRadius
 
         public static readonly DependencyProperty CornerRadiusProperty =

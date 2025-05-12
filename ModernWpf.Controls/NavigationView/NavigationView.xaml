@@ -153,7 +153,6 @@
         <Setter Property="UseSystemFocusVisuals" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="CornerRadius" Value="{DynamicResource OverlayCornerRadius}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="primitives:NavigationViewItemPresenter">
@@ -249,18 +248,16 @@
                         <Grid x:Name="PresenterContentRootGrid">
                             <!-- Wrap SelectionIndicator in a grid so that its offset is 0,0 - this enables the offset animation. -->
                             <Grid
-                                Margin="4,0,0,0"
+                                Margin="0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center">
 
                                 <Rectangle
                                     x:Name="SelectionIndicator"
-                                    Width="3"
-                                    Height="16"
+                                    Width="{Binding ActualWidth, ElementName=PresenterContentRootGrid}"
+                                    Height="{DynamicResource NavigationViewItemOnLeftMinHeight}"
                                     Fill="{DynamicResource NavigationViewSelectionIndicatorForeground}"
-                                    Opacity="0.0"
-                                    RadiusX="2"
-                                    RadiusY="2"/>
+                                    Opacity="0.0" />
                             </Grid>
 
                             <Grid
@@ -273,10 +270,40 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <Border x:Name="IconColumn" Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.SmallerIconWidth}">
+                                <Border x:Name="IconColumn" Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.IconWidth}">
                                     <Viewbox x:Name="IconBox"
-                                             Height="16"
+                                             Height="Auto"
                                              Margin="{DynamicResource NavigationViewItemOnLeftIconBoxMargin}">
+                                        <Viewbox.Resources>
+                                            <Style TargetType="{x:Type ui:FontIcon}">
+                                                <Setter Property="FontSize"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                            </Style>
+                                            <Style TargetType="{x:Type ui:SymbolIcon}">
+                                                <Setter Property="Width"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                                <Setter Property="Height"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                            </Style>
+                                            <Style TargetType="{x:Type ui:BitmapIcon}">
+                                                <Setter Property="Width"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                                <Setter Property="Height"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                            </Style>
+                                            <Style TargetType="{x:Type ui:PathIcon}">
+                                                <Setter Property="Width"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                                <Setter Property="Height"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                            </Style>
+                                            <Style TargetType="{x:Type ui:SvgIcon}">
+                                                <Setter Property="Width"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                                <Setter Property="Height"
+                                                        Value="{DynamicResource NavigationViewItemIconFontSize}" />
+                                            </Style>
+                                        </Viewbox.Resources>
                                         <ContentPresenter
                                             x:Name="Icon"
                                             Content="{TemplateBinding Icon}"
@@ -292,6 +319,7 @@
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     Content="{TemplateBinding Content}"
                                     TextElement.Foreground="{TemplateBinding Foreground}"
+                                    TextElement.FontSize="{DynamicResource NavigationViewItemFontSize}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"/>
@@ -375,7 +403,6 @@
         <Setter Property="UseSystemFocusVisuals" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:NavigationViewItem">
@@ -1057,7 +1084,7 @@
                                     HorizontalAlignment="Center"
                                     Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.PaneToggleButtonVisibility}"
                                     VerticalAlignment="Top"
-                                    MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.SmallerPaneToggleButtonWidth}"
+                                    MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.PaneToggleButtonWidth}"
                                     ui:FocusVisualHelper.FocusVisualMargin="0">
                                     <TextBlock
                                         x:Name="PaneTitleTextBlock"
@@ -1240,7 +1267,7 @@
                                 OpenPaneLength="{TemplateBinding OpenPaneLength}"
                                 PaneBackground="{DynamicResource NavigationViewDefaultPaneBackground}"
                                 Grid.Row="1"
-                                CornerRadius="{DynamicResource OverlayCornerRadius}">
+                                CornerRadius="0">
 
                                 <local:SplitView.Pane>
                                     <Border x:Name="PaneContentGrid"
@@ -1437,7 +1464,6 @@
                         </Trigger>
 
                         <Trigger SourceName="PaneOverlayGroupListener" Property="CurrentStateName" Value="PaneNotOverlaying">
-                            <Setter TargetName="RootSplitView" Property="CornerRadius" Value="0" />
                             <Setter TargetName="RootSplitView" Property="BorderThickness" Value="0" />
                             <Setter TargetName="PaneContentGrid" Property="BorderThickness" Value="0,0,1,0" />
                             <Setter TargetName="RootSplitView" Property="PaneBackground" Value="{DynamicResource NavigationViewExpandedPaneBackground}" />
@@ -1465,7 +1491,6 @@
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="Once"/>
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:NavigationViewItem">

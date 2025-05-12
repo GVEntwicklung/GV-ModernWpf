@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using ModernWpf.Input;
 using static CppWinRTHelpers;
-using static ModernWpf.Controls.NavigationViewItemHelper;
 
 namespace ModernWpf.Controls.Primitives
 {
@@ -242,7 +242,7 @@ namespace ModernWpf.Controls.Primitives
                 var gridLength = compactPaneLength;
 
                 templateSettings.IconWidth = gridLength;
-                templateSettings.SmallerIconWidth = gridLength - 8;
+                templateSettings.SmallerIconWidth = Math.Max(0, gridLength - 8);
             }
         }
 
