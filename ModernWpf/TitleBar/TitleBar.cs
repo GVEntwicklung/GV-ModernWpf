@@ -137,6 +137,27 @@ namespace ModernWpf.Controls
 
         #endregion
 
+        #region Icon
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.RegisterAttached(
+                "Icon",
+                typeof(ImageSource),
+                typeof(TitleBar),
+                new PropertyMetadata(null));
+
+        public static ImageSource GetIcon(Window window)
+        {
+            return (ImageSource)window.GetValue(IconProperty);
+        }
+
+        public static void SetIcon(Window window, ImageSource value)
+        {
+            window.SetValue(IconProperty, value);
+        }
+
+        #endregion
+
         #region IsIconVisible
 
         public static readonly DependencyProperty IsIconVisibleProperty =
