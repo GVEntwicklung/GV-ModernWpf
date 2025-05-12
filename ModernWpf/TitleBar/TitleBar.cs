@@ -313,6 +313,27 @@ namespace ModernWpf.Controls
 
         #endregion
 
+        #region Content
+
+        public static readonly DependencyProperty ContentProperty =
+            DependencyProperty.RegisterAttached(
+                "Content",
+                typeof(object),
+                typeof(TitleBar),
+                new PropertyMetadata(null));
+
+        public static object GetContent(Window window)
+        {
+            return (bool)window.GetValue(ContentProperty);
+        }
+
+        public static void SetContent(Window window, object value)
+        {
+            window.SetValue(ContentProperty, value);
+        }
+
+        #endregion
+
         #region SystemOverlayLeftInset
 
         internal static readonly DependencyPropertyKey SystemOverlayLeftInsetPropertyKey =

@@ -15,6 +15,7 @@ namespace ModernWpf.Controls.Primitives
     [TemplatePart(Name = BackButtonName, Type = typeof(Button))]
     [TemplatePart(Name = MaximizeRestoreButtonName, Type = typeof(TitleBarButton))]
     [TemplatePart(Name = LeftSystemOverlayName, Type = typeof(FrameworkElement))]
+    [TemplatePart(Name = ContentSystemOverlayName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = RightSystemOverlayName, Type = typeof(FrameworkElement))]
     [StyleTypedProperty(Property = nameof(ButtonStyle), StyleTargetType = typeof(TitleBarButton))]
     [StyleTypedProperty(Property = nameof(BackButtonStyle), StyleTargetType = typeof(TitleBarButton))]
@@ -23,6 +24,7 @@ namespace ModernWpf.Controls.Primitives
         private const string BackButtonName = "PART_BackButton";
         private const string MaximizeRestoreButtonName = "PART_MaximizeRestoreButton";
         private const string LeftSystemOverlayName = "PART_LeftSystemOverlay";
+        private const string ContentSystemOverlayName = "PART_ContentSystemOverlay";
         private const string RightSystemOverlayName = "PART_RightSystemOverlay";
 
         private Window _parentWindow;
@@ -299,6 +301,19 @@ namespace ModernWpf.Controls.Primitives
 
         #endregion
 
+        #region Content
+
+        public static readonly DependencyProperty ContentProperty =
+            TitleBar.ContentProperty.AddOwner(typeof(TitleBarControl));
+
+        public object Content
+        {
+            get => GetValue(ContentProperty);
+            set => SetValue(ContentProperty, value);
+        }
+
+        #endregion
+
         #region InsideTitleBar
 
         internal static readonly DependencyProperty InsideTitleBarProperty =
@@ -326,6 +341,8 @@ namespace ModernWpf.Controls.Primitives
 
         private FrameworkElement LeftSystemOverlay { get; set; }
 
+        private FrameworkElement ContentSystemOverlay { get; set; }
+
         private FrameworkElement RightSystemOverlay { get; set; }
 
         public override void OnApplyTemplate()
@@ -350,6 +367,7 @@ namespace ModernWpf.Controls.Primitives
             BackButton = GetTemplateChild(BackButtonName) as Button;
             MaximizeRestoreButton = GetTemplateChild(MaximizeRestoreButtonName) as TitleBarButton;
             LeftSystemOverlay = GetTemplateChild(LeftSystemOverlayName) as FrameworkElement;
+            ContentSystemOverlay = GetTemplateChild(ContentSystemOverlayName) as FrameworkElement;
             RightSystemOverlay = GetTemplateChild(RightSystemOverlayName) as FrameworkElement;
 
             if (BackButton != null)

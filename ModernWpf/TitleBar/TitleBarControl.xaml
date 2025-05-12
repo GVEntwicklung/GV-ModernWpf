@@ -5,7 +5,7 @@
     xmlns:primitives="clr-namespace:ModernWpf.Controls.Primitives"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:Double x:Key="{x:Static local:TitleBar.HeightKey}">32</sys:Double>
+    <sys:Double x:Key="{x:Static local:TitleBar.HeightKey}">48</sys:Double>
     
     <StreamGeometry x:Key="ChromeClose">M 11.416016 10 L 20 18.583984 L 18.583984 20 L 10 11.416016 L 1.416016 20 L 0 18.583984 L 8.583984 10 L 0 1.416016 L 1.416016 0 L 10 8.583984 L 18.583984 0 L 20 1.416016 Z</StreamGeometry>
     <StreamGeometry x:Key="ChromeMinimize">M 20 8 L 20 10 L 0 10 L 0 8 Z</StreamGeometry>
@@ -31,6 +31,7 @@
                         Background="{TemplateBinding Background}"
                         SnapsToDevicePixels="True">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
@@ -76,7 +77,8 @@
                                 x:Name="Title"
                                 Margin="12,0,12,0"
                                 VerticalAlignment="Center"
-                                FontSize="12"
+                                FontSize="32"
+                                FontWeight="Bold"
                                 Background="{x:Null}"
                                 Foreground="{TemplateBinding Foreground}"
                                 Text="{TemplateBinding Title}"
@@ -86,10 +88,15 @@
                                 </TextBlock.RenderTransform>
                             </TextBlock>
                         </StackPanel>
+                        
+                        <ContentPresenter
+                            x:Name="PART_MainSystemOverlay"
+                            Grid.Column="2"
+                            Content="{TemplateBinding Content}"/>
 
                         <StackPanel
                             x:Name="PART_RightSystemOverlay"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Orientation="Horizontal">
                             <primitives:TitleBarButton
                                 x:Name="MinimizeButton"
