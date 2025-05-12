@@ -82,9 +82,6 @@
                                 Foreground="{TemplateBinding Foreground}"
                                 Text="{TemplateBinding Title}"
                                 TextTrimming="CharacterEllipsis">
-                                <TextBlock.RenderTransform>
-                                    <TranslateTransform Y="-1" />
-                                </TextBlock.RenderTransform>
                             </TextBlock>
                         </StackPanel>
                         
