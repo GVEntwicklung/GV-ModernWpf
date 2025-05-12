@@ -66,7 +66,6 @@
                                 </Grid.RowDefinitions>
 
                                 <primitives:TitleBarControl
-                                    Icon="{TemplateBinding Icon}"
                                     Title="{TemplateBinding Title}"
                                     IsActive="{TemplateBinding IsActive}"
                                     Background="{TemplateBinding local:TitleBar.Background}"
@@ -76,6 +75,7 @@
                                     Style="{TemplateBinding local:TitleBar.Style}"
                                     ButtonStyle="{TemplateBinding local:TitleBar.ButtonStyle}"
                                     IsIconVisible="{TemplateBinding local:TitleBar.IsIconVisible}"
+                                    Icon="{TemplateBinding local:TitleBar.Icon}"
                                     IsBackButtonVisible="{TemplateBinding local:TitleBar.IsBackButtonVisible}"
                                     IsBackEnabled="{TemplateBinding local:TitleBar.IsBackEnabled}"
                                     BackButtonCommand="{TemplateBinding local:TitleBar.BackButtonCommand}"
@@ -83,6 +83,7 @@
                                     BackButtonCommandTarget="{TemplateBinding local:TitleBar.BackButtonCommandTarget}"
                                     BackButtonStyle="{TemplateBinding local:TitleBar.BackButtonStyle}"
                                     ExtendViewIntoTitleBar="{TemplateBinding local:TitleBar.ExtendViewIntoTitleBar}"
+                                    Content="{TemplateBinding local:TitleBar.Content}"
                                     Panel.ZIndex="1"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
