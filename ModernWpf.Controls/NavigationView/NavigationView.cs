@@ -259,9 +259,7 @@ namespace ModernWpf.Controls
             m_navigationViewItemsFactory = new NavigationViewItemsFactory();
 
             m_bitmapCache = new BitmapCache();
-#if NET462_OR_NEWER
             m_bitmapCache.RenderAtScale = VisualTreeHelper.GetDpi(this).PixelsPerDip;
-#endif
         }
 
         void OnSelectionModelChildrenRequested(SelectionModel selectionModel, SelectionModelChildrenRequestedEventArgs e)
@@ -774,7 +772,8 @@ namespace ModernWpf.Controls
                         UpdateSelectionForMenuItems();
                         return MenuItems;
                     }
-                };
+                }
+                ;
                 itemsSource = init();
             }
 
@@ -1079,7 +1078,8 @@ namespace ModernWpf.Controls
                         }
                     }
                     return NavigationRecommendedTransitionDirection.Default;
-                };
+                }
+                ;
                 recommendedDirection = init();
             }
 
@@ -5750,14 +5750,12 @@ namespace ModernWpf.Controls
             return GetTemplateChild(childName);
         }
 
-#if NET462_OR_NEWER
         protected override void OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)
         {
             base.OnDpiChanged(oldDpi, newDpi);
 
             m_bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
         }
-#endif
 
         bool m_InitialNonForcedModeUpdate = true;
 

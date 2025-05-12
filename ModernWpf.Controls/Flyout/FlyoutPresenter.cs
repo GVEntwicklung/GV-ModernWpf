@@ -62,7 +62,6 @@ namespace ModernWpf.Controls
             }
         }
 
-#if NET462_OR_NEWER
         protected override void OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)
         {
             base.OnDpiChanged(oldDpi, newDpi);
@@ -72,6 +71,5 @@ namespace ModernWpf.Controls
                 bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
             }
         }
-#endif
     }
 }

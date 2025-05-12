@@ -10,12 +10,10 @@ namespace ModernWpf
             DpiScaleY = dpiScaleY;
         }
 
-#if NET462_OR_NEWER
         public DpiScale2(DpiScale dpiScale)
             : this(dpiScale.DpiScaleX, dpiScale.DpiScaleY)
         {
         }
-#endif
 
         public double DpiScaleX { get; }
         public double DpiScaleY { get; }

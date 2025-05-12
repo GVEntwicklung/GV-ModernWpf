@@ -80,7 +80,6 @@ namespace ModernWpf.Automation.Peers
             }
         }
 
-#if NET48_OR_NEWER
         protected override int GetPositionInSetCore()
         {
             int positionInSet = 0;
@@ -115,7 +114,6 @@ namespace ModernWpf.Automation.Peers
 
             return sizeOfSet;
         }
-#endif
 
         void IInvokeProvider.Invoke()
         {

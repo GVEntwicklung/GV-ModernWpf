@@ -1,10 +1,10 @@
-﻿using System;
+﻿using MS.Win32;
+using Standard;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
-using MS.Win32;
-using Standard;
 using NativeMethods = Standard.NativeMethods;
 
 namespace ModernWpf.Controls.Primitives
@@ -68,9 +68,7 @@ namespace ModernWpf.Controls.Primitives
             _hwnd = new WindowInteropHelper(window).Handle;
 
             _window.StateChanged += WindowStateChanged;
-#if NET462_OR_NEWER
             _window.DpiChanged += WindowDpiChanged;
-#endif
             _window.Closed += WindowClosed;
 
             if (_hwnd != IntPtr.Zero)
@@ -94,9 +92,7 @@ namespace ModernWpf.Controls.Primitives
             {
                 _window.SourceInitialized -= WindowSourceInitialized;
                 _window.StateChanged -= WindowStateChanged;
-#if NET462_OR_NEWER
                 _window.DpiChanged -= WindowDpiChanged;
-#endif
                 _window.Closed -= WindowClosed;
                 _window.ClearValue(Control.PaddingProperty);
                 _window = null;
@@ -127,13 +123,11 @@ namespace ModernWpf.Controls.Primitives
             UpdateWindowPadding();
         }
 
-#if NET462_OR_NEWER
         private void WindowDpiChanged(object sender, DpiChangedEventArgs e)
         {
             InvalidateMaximizedWindowBorder();
             UpdateWindowPadding();
         }
-#endif
 
         private void WindowClosed(object sender, EventArgs e)
         {
