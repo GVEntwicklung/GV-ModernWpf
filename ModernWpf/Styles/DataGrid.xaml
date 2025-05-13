@@ -627,6 +627,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="MouseOver">
                             <Setter TargetName="BackgroundRectangle" Property="Fill" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
+                            <Setter TargetName="BackgroundRectangle" Property="Opacity" Value="{DynamicResource DataGridRowHoveredBackgroundOpacity}" />
                         </Trigger>
                         <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="Normal_Selected">
                             <Setter TargetName="BackgroundRectangle" Property="Fill" Value="{DynamicResource DataGridRowSelectedBackground}" />
