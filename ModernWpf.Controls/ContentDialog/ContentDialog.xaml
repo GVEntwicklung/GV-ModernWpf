@@ -233,10 +233,10 @@
                                 <Grid
                                     x:Name="BackgroundElement"
                                     FlowDirection="{TemplateBinding FlowDirection}"
-                                    MinWidth="{StaticResource ContentDialogMinWidth}"
-                                    MaxWidth="{StaticResource ContentDialogMaxWidth}"
-                                    MinHeight="{StaticResource ContentDialogMinHeight}"
-                                    MaxHeight="{StaticResource ContentDialogMaxHeight}"
+                                    MinWidth="{DynamicResource ContentDialogMinWidth}"
+                                    MaxWidth="{DynamicResource ContentDialogMaxWidth}"
+                                    MinHeight="{DynamicResource ContentDialogMinHeight}"
+                                    MaxHeight="{DynamicResource ContentDialogMaxHeight}"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     RenderTransformOrigin="0.5,0.5">
