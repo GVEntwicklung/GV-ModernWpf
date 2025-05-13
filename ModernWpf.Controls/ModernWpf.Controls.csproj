@@ -18,6 +18,13 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="ModernWpf.Controls.xml">
+          <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+          <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
         <None Include="Properties\DesignTimeResources.xaml" />
     </ItemGroup>
 
@@ -27,12 +34,6 @@
 
     <ItemGroup>
         <None Include="AutoSuggestBox\AutoSuggestBoxHelper.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Update="ModernWpf.Controls.xml">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
     </ItemGroup>
 
     <Target Name="GetDocumentationFile">
