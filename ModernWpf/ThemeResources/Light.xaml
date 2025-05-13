@@ -578,6 +578,19 @@
     <m:StaticResource x:Key="ButtonBorderBrushPointerOver" ResourceKey="ControlElevationBorderBrush" />
     <m:StaticResource x:Key="ButtonBorderBrushPressed" ResourceKey="ControlStrokeColorDefaultBrush" />
     <m:StaticResource x:Key="ButtonBorderBrushDisabled" ResourceKey="ControlStrokeColorDefaultBrush" />
+    
+    <m:StaticResource x:Key="TransparentButtonBackground" ResourceKey="ControlFillColorTransparentBrush" />
+    <m:StaticResource x:Key="TransparentButtonBackgroundPointerOver" ResourceKey="ControlFillColorDefaultBrush" />
+    <m:StaticResource x:Key="TransparentButtonBackgroundPressed" ResourceKey="ControlFillColorSecondaryBrush" />
+    <m:StaticResource x:Key="TransparentButtonBackgroundDisabled" ResourceKey="ControlFillColorTransparentBrush" />
+    <m:StaticResource x:Key="TransparentButtonForeground" ResourceKey="TextFillColorPrimaryBrush" />
+    <m:StaticResource x:Key="TransparentButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush" />
+    <m:StaticResource x:Key="TransparentButtonForegroundPressed" ResourceKey="TextFillColorSecondaryBrush" />
+    <m:StaticResource x:Key="TransparentButtonForegroundDisabled" ResourceKey="TextFillColorDisabledBrush" />
+    <m:StaticResource x:Key="TransparentButtonBorderBrush" ResourceKey="ControlFillColorTransparentBrush" />
+    <m:StaticResource x:Key="TransparentButtonBorderBrushPointerOver" ResourceKey="ControlFillColorDefaultBrush" />
+    <m:StaticResource x:Key="TransparentButtonBorderBrushPressed" ResourceKey="ControlFillColorSecondaryBrush" />
+    <m:StaticResource x:Key="TransparentButtonBorderBrushDisabled" ResourceKey="ControlFillColorTransparentBrush" />
 
     <!-- Resources for CalendarDatePicker -->
     <Thickness x:Key="CalendarDatePickerBorderThemeThickness">1</Thickness>
@@ -914,6 +927,18 @@
     <m:StaticResource x:Key="DateTimePickerFlyoutButtonBorderBrushPressed" ResourceKey="ControlStrokeColorDefaultBrush" />
     <m:StaticResource x:Key="DateTimePickerFlyoutButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush" />
     <m:StaticResource x:Key="DateTimePickerFlyoutButtonForegroundPressed" ResourceKey="TextFillColorPrimaryBrush" />
+
+    <!-- Resources for Expander -->
+    <m:StaticResource x:Key="ExpanderBackground" ResourceKey="ControlFillColorTransparentBrush" />
+    <m:StaticResource x:Key="ExpanderBackgroundDisabled" ResourceKey="ControlFillColorTransparentBrush" />
+    <m:StaticResource x:Key="ExpanderBorderBrush" ResourceKey="ControlElevationBorderBrush" />
+    <m:StaticResource x:Key="ExpanderBorderBrushDisabled" ResourceKey="ControlStrokeColorDefaultBrush" />
+    <m:StaticResource x:Key="ExpanderHeaderBackground" ResourceKey="ControlFillColorDefaultBrush" />
+    <m:StaticResource x:Key="ExpanderHeaderBackgroundDisabled" ResourceKey="ControlFillColorDisabledBrush" />
+    <m:StaticResource x:Key="ExpanderHeaderForeground" ResourceKey="TextFillColorPrimaryBrush" />
+    <m:StaticResource x:Key="ExpanderHeaderForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush" />
+    <m:StaticResource x:Key="ExpanderHeaderForegroundPressed" ResourceKey="TextFillColorSecondaryBrush" />
+    <m:StaticResource x:Key="ExpanderHeaderForegroundDisabled" ResourceKey="TextFillColorDisabledBrush" />
 
     <!-- Resources for FlipView -->
     <Thickness x:Key="FlipViewButtonBorderThemeThickness">0</Thickness>
@@ -1256,7 +1281,7 @@
     <Thickness x:Key="PivotNavButtonBorderThemeThickness">0</Thickness>
     <Thickness x:Key="PivotNavButtonMargin">0,6,0,0</Thickness>
     <Thickness x:Key="PivotPortraitThemePadding">12,14,0,13</Thickness>
-    <FontWeight x:Key="PivotHeaderItemThemeFontWeight">350</FontWeight>
+    <FontWeight x:Key="PivotHeaderItemThemeFontWeight">Normal</FontWeight>
     <FontWeight x:Key="PivotTitleThemeFontWeight">Bold</FontWeight>
     <m:StaticResource x:Key="PivotBackground" ResourceKey="SystemControlTransparentBrush" />
     <m:StaticResource x:Key="PivotHeaderBackground" ResourceKey="SystemControlTransparentBrush" />

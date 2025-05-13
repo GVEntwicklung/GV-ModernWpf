@@ -1874,7 +1874,7 @@ namespace ModernWpf.Controls
             var newButtonWidths = CompactPaneLength;
 
             templateSettings.PaneToggleButtonWidth = newButtonWidths;
-            templateSettings.SmallerPaneToggleButtonWidth = newButtonWidths - 8;
+            templateSettings.SmallerPaneToggleButtonWidth = Math.Max(0, newButtonWidths - 8);
         }
 
         void OnBackButtonClicked(object sender, RoutedEventArgs args)

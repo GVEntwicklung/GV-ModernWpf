@@ -60,31 +60,55 @@
                                 Padding="2,4,2,0"
                                 Margin="8,0,0,0" />
                         </Grid>
-
                     </Border>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsTransparent" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
                             <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsTransparent" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ButtonBackgroundPointerOver}" />
+                        </MultiTrigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
                             <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
                             <Setter TargetName="ChevronIcon" Property="Foreground" Value="{DynamicResource DropDownButtonForegroundSecondaryPressed}" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsTransparent" Value="True" />
+                                <Condition Property="IsPressed" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ButtonBackgroundPressed}" />
+                        </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
                             <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
                             <Setter TargetName="ChevronIcon" Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsTransparent" Value="True" />
+                                <Condition Property="IsEnabled" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>

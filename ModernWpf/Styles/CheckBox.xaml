@@ -31,8 +31,8 @@
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
-        <Setter Property="MinWidth" Value="{StaticResource CheckBoxMinWidth}" />
-        <Setter Property="MinHeight" Value="{StaticResource CheckBoxHeight}" />
+        <Setter Property="MinWidth" Value="{DynamicResource CheckBoxMinWidth}" />
+        <Setter Property="MinHeight" Value="{DynamicResource CheckBoxHeight}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="primitives:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
         <Setter Property="primitives:FocusVisualHelper.FocusVisualMargin" Value="{StaticResource CheckBoxFocusVisualMargin}" />
