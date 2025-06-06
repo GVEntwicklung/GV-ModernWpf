@@ -34,6 +34,8 @@
     <sys:Double x:Key="NavigationViewItemFontSize">24</sys:Double>
     
     <Thickness x:Key="NavigationViewToggleBorderThickness">0</Thickness>
+    <Thickness x:Key="NavigationViewBorderThickness">0</Thickness>
+    <Thickness x:Key="NavigationViewExpandedBorderThickness">0</Thickness>
     <Thickness x:Key="NavigationViewItemBorderThickness">1</Thickness>
     <Thickness x:Key="NavigationViewItemOnLeftIconBoxMargin">12</Thickness>
     <Thickness x:Key="NavigationViewItemButtonMargin">0</Thickness>

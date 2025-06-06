@@ -521,13 +521,13 @@
       <summary>Gets the identifier of the CloseButtonStyle dependency property.</summary>
       <returns>The identifier of the CloseButtonStyle dependency property.</returns>
     </member>
-    <member name="P:ModernWpf.Controls.ContentDialog.CloseButtonText">
+    <member name="P:ModernWpf.Controls.ContentDialog.CloseButtonContent">
       <summary>Gets or sets the text to display on the close button.</summary>
       <returns>The text to display on the close button.</returns>
     </member>
-    <member name="F:ModernWpf.Controls.ContentDialog.CloseButtonTextProperty">
-      <summary>Gets the identifier of the CloseButtonText dependency property.</summary>
-      <returns>The identifier of the CloseButtonText dependency property.</returns>
+    <member name="F:ModernWpf.Controls.ContentDialog.CloseButtonContentProperty">
+      <summary>Gets the identifier of the CloseButtonContent dependency property.</summary>
+      <returns>The identifier of the CloseButtonContent dependency property.</returns>
     </member>
     <member name="P:ModernWpf.Controls.ContentDialog.DefaultButton">
       <summary>Gets or sets a value that indicates which button on the dialog is the default action.</summary>
@@ -585,13 +585,13 @@
       <summary>Gets the identifier of the PrimaryButtonStyle dependency property.</summary>
       <returns>The identifier of the PrimaryButtonStyle dependency property.</returns>
     </member>
-    <member name="P:ModernWpf.Controls.ContentDialog.PrimaryButtonText">
+    <member name="P:ModernWpf.Controls.ContentDialog.PrimaryButtonContent">
       <summary>Gets or sets the text to display on the primary button.</summary>
       <returns>The text to display on the primary button. To hide this button, set the text to **null** or string.empty. The default is empty.</returns>
     </member>
-    <member name="F:ModernWpf.Controls.ContentDialog.PrimaryButtonTextProperty">
-      <summary>Gets the identifier of the PrimaryButtonText dependency property.</summary>
-      <returns>The identifier of the PrimaryButtonText dependency property.</returns>
+    <member name="F:ModernWpf.Controls.ContentDialog.PrimaryButtonContentProperty">
+      <summary>Gets the identifier of the PrimaryButtonContent dependency property.</summary>
+      <returns>The identifier of the PrimaryButtonContent dependency property.</returns>
     </member>
     <member name="P:ModernWpf.Controls.ContentDialog.SecondaryButtonCommand">
       <summary>Gets or sets the command to invoke when the secondary button is tapped.</summary>
@@ -617,13 +617,13 @@
       <summary>Gets the identifier of the SecondaryButtonStyle dependency property.</summary>
       <returns>The identifier of the SecondaryButtonStyle dependency property.</returns>
     </member>
-    <member name="P:ModernWpf.Controls.ContentDialog.SecondaryButtonText">
+    <member name="P:ModernWpf.Controls.ContentDialog.SecondaryButtonContent">
       <summary>Gets or sets the text to be displayed on the secondary button.</summary>
       <returns>The text to be displayed on the secondary button. To hide this button, set the value to **null** or **string.empty**.</returns>
     </member>
-    <member name="F:ModernWpf.Controls.ContentDialog.SecondaryButtonTextProperty">
-      <summary>Gets the identifier of the SecondaryButtonText dependency property.</summary>
-      <returns>The identifier of the SecondaryButtonText dependency property.</returns>
+    <member name="F:ModernWpf.Controls.ContentDialog.SecondaryButtonContentProperty">
+      <summary>Gets the identifier of the SecondaryButtonContent dependency property.</summary>
+      <returns>The identifier of the SecondaryButtonContent dependency property.</returns>
     </member>
     <member name="P:ModernWpf.Controls.ContentDialog.Title">
       <summary>Gets or sets the title of the dialog.</summary>

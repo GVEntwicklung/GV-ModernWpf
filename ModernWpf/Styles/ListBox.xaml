@@ -31,8 +31,8 @@
                                 primitives:FocusVisualHelper.IsTemplateFocusTarget="True" />
                             <ContentPresenter
                                 x:Name="ContentPresenter"
-                                TextElement.FontWeight="Normal"
-                                TextElement.FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                TextElement.FontWeight="{TemplateBinding FontWeight}"
+                                TextElement.FontSize="{TemplateBinding FontSize}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Margin="{TemplateBinding Padding}"

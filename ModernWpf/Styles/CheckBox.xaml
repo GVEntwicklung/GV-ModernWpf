@@ -18,7 +18,7 @@
     <Thickness x:Key="CheckBoxFocusVisualMargin">-7,-3,-7,-3</Thickness>
     <sys:String x:Key="CheckBoxCheckedGlyph">&#xE001;</sys:String>
     <sys:String x:Key="CheckBoxIndeterminateGlyph">&#xE9AE;</sys:String>
-
+    
     <Style x:Key="DefaultCheckBoxStyle" TargetType="CheckBox">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Background" Value="{DynamicResource CheckBoxBackgroundUnchecked}" />
@@ -37,6 +37,7 @@
         <Setter Property="primitives:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
         <Setter Property="primitives:FocusVisualHelper.FocusVisualMargin" Value="{StaticResource CheckBoxFocusVisualMargin}" />
         <Setter Property="primitives:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="primitives:CheckBoxHelper.ShowGlyphs" Value="False" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
@@ -267,6 +268,9 @@
                             <Setter TargetName="DownLevelCheckGlyph" Property="Data" Value="{StaticResource CheckboxIndeterminate}" />
                             <Setter TargetName="DownLevelCheckGlyph" Property="Opacity" Value="1" />
                         </MultiTrigger>
+                        <Trigger Property="primitives:CheckBoxHelper.ShowGlyphs" Value="False">
+                            <Setter TargetName="DownLevelCheckGlyph" Property="Opacity" Value="0" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

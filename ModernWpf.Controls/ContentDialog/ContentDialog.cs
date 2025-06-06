@@ -93,19 +93,19 @@ namespace ModernWpf.Controls
 
         #endregion
 
-        #region PrimaryButtonText
+        #region PrimaryButtonContent
 
-        public static readonly DependencyProperty PrimaryButtonTextProperty =
+        public static readonly DependencyProperty PrimaryButtonContentProperty =
             DependencyProperty.Register(
-                nameof(PrimaryButtonText),
-                typeof(string),
+                nameof(PrimaryButtonContent),
+                typeof(object),
                 typeof(ContentDialog),
-                new PropertyMetadata(string.Empty, OnButtonTextChanged));
+                new PropertyMetadata(null, OnButtonContentChanged));
 
-        public string PrimaryButtonText
+        public object PrimaryButtonContent
         {
-            get => (string)GetValue(PrimaryButtonTextProperty);
-            set => SetValue(PrimaryButtonTextProperty, value);
+            get => GetValue(PrimaryButtonContentProperty);
+            set => SetValue(PrimaryButtonContentProperty, value);
         }
 
         #endregion
@@ -178,19 +178,19 @@ namespace ModernWpf.Controls
 
         #endregion
 
-        #region SecondaryButtonText
+        #region SecondaryButtonContent
 
-        public static readonly DependencyProperty SecondaryButtonTextProperty =
+        public static readonly DependencyProperty SecondaryButtonContentProperty =
             DependencyProperty.Register(
-                nameof(SecondaryButtonText),
-                typeof(string),
+                nameof(SecondaryButtonContent),
+                typeof(object),
                 typeof(ContentDialog),
-                new PropertyMetadata(string.Empty, OnButtonTextChanged));
+                new PropertyMetadata(null, OnButtonContentChanged));
 
-        public string SecondaryButtonText
+        public string SecondaryButtonContent
         {
-            get => (string)GetValue(SecondaryButtonTextProperty);
-            set => SetValue(SecondaryButtonTextProperty, value);
+            get => (string)GetValue(SecondaryButtonContentProperty);
+            set => SetValue(SecondaryButtonContentProperty, value);
         }
 
         #endregion
@@ -263,19 +263,19 @@ namespace ModernWpf.Controls
 
         #endregion
 
-        #region CloseButtonText
+        #region CloseButtonContent
 
-        public static readonly DependencyProperty CloseButtonTextProperty =
+        public static readonly DependencyProperty CloseButtonContentProperty =
             DependencyProperty.Register(
-                nameof(CloseButtonText),
-                typeof(string),
+                nameof(CloseButtonContent),
+                typeof(object),
                 typeof(ContentDialog),
-                new PropertyMetadata(string.Empty, OnButtonTextChanged));
+                new PropertyMetadata(null, OnButtonContentChanged));
 
-        public string CloseButtonText
+        public string CloseButtonContent
         {
-            get => (string)GetValue(CloseButtonTextProperty);
-            set => SetValue(CloseButtonTextProperty, value);
+            get => (string)GetValue(CloseButtonContentProperty);
+            set => SetValue(CloseButtonContentProperty, value);
         }
 
         #endregion
@@ -887,9 +887,9 @@ namespace ModernWpf.Controls
         {
             string stateName;
 
-            bool primaryVisible = !string.IsNullOrEmpty(PrimaryButtonText);
-            bool secondaryVisible = !string.IsNullOrEmpty(SecondaryButtonText);
-            bool closeVisible = !string.IsNullOrEmpty(CloseButtonText);
+            bool primaryVisible = PrimaryButtonContent != null && (PrimaryButtonContent is not string pbc || !string.IsNullOrEmpty(pbc));
+            bool secondaryVisible = SecondaryButtonContent != null && (SecondaryButtonContent is not string sbc || !string.IsNullOrEmpty(sbc));
+            bool closeVisible = CloseButtonContent != null && (CloseButtonContent is not string cbc || !string.IsNullOrEmpty(cbc));
 
             if (primaryVisible && secondaryVisible && closeVisible)
             {
@@ -1049,7 +1049,7 @@ namespace ModernWpf.Controls
             return m_activatedTcs.Task;
         }
 
-        private static void OnButtonTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnButtonContentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ((ContentDialog)d).UpdateButtonsVisibilityStates(true);
         }

@@ -130,13 +130,10 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SecondaryColumn" Storyboard.TargetProperty="Width">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0">
                                                 <DiscreteObjectKeyFrame.Value>
-                                                    <GridLength>*</GridLength>
+                                                    <GridLength>Auto</GridLength>
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <Int32AnimationUsingKeyFrames Storyboard.TargetName="SecondaryButton" Storyboard.TargetProperty="(Grid.Column)">
-                                            <DiscreteInt32KeyFrame KeyTime="0:0:0" Value="2" />
-                                        </Int32AnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="NoneVisible">
@@ -148,9 +145,6 @@
                                 </VisualState>
                                 <VisualState x:Name="PrimaryVisible">
                                     <Storyboard>
-                                        <Int32AnimationUsingKeyFrames Storyboard.TargetName="PrimaryButton" Storyboard.TargetProperty="(Grid.Column)">
-                                            <DiscreteInt32KeyFrame KeyTime="0:0:0" Value="4" />
-                                        </Int32AnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SecondaryButton" Storyboard.TargetProperty="Visibility">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}" />
                                         </ObjectAnimationUsingKeyFrames>
@@ -161,9 +155,6 @@
                                 </VisualState>
                                 <VisualState x:Name="SecondaryVisible">
                                     <Storyboard>
-                                        <Int32AnimationUsingKeyFrames Storyboard.TargetName="SecondaryButton" Storyboard.TargetProperty="(Grid.Column)">
-                                            <DiscreteInt32KeyFrame KeyTime="0:0:0" Value="4" />
-                                        </Int32AnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PrimaryButton" Storyboard.TargetProperty="Visibility">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}" />
                                         </ObjectAnimationUsingKeyFrames>
@@ -185,7 +176,7 @@
                                 <VisualState x:Name="PrimaryAndSecondaryVisible">
                                     <Storyboard>
                                         <Int32AnimationUsingKeyFrames Storyboard.TargetName="SecondaryButton" Storyboard.TargetProperty="(Grid.Column)">
-                                            <DiscreteInt32KeyFrame KeyTime="0:0:0" Value="4" />
+                                            <DiscreteInt32KeyFrame KeyTime="0:0:0" Value="0" />
                                         </Int32AnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CloseButton" Storyboard.TargetProperty="Visibility">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}" />
@@ -306,7 +297,6 @@
                                                                 Content="{TemplateBinding Content}"
                                                                 FontSize="{DynamicResource ControlContentThemeFontSize}"
                                                                 FontFamily="{DynamicResource ContentControlThemeFontFamily}"
-                                                                Foreground="{TemplateBinding Foreground}"
                                                                 Grid.Row="1"
                                                                 TextWrapping="Wrap"
                                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -316,36 +306,41 @@
                                                 <Grid
                                                     x:Name="CommandSpace"
                                                     Grid.Row="1"
-                                                    HorizontalAlignment="Stretch"
+                                                    HorizontalAlignment="Right"
                                                     VerticalAlignment="Bottom"
                                                     KeyboardNavigation.DirectionalNavigation="Contained"
                                                     Margin="{StaticResource ContentDialogPadding}"
                                                     Background="{TemplateBinding Background}">
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition x:Name="PrimaryColumn" Width="*" />
-                                                        <ColumnDefinition x:Name="FirstSpacer" Width="0" />
-                                                        <ColumnDefinition x:Name="SecondaryColumn" Width="0" />
+                                                        <ColumnDefinition x:Name="CloseColumn" Width="Auto" />
                                                         <ColumnDefinition x:Name="SecondSpacer" Width="{StaticResource ContentDialogButtonSpacing}" />
-                                                        <ColumnDefinition x:Name="CloseColumn" Width="*" />
+                                                        <ColumnDefinition x:Name="SecondaryColumn" Width="0" />
+                                                        <ColumnDefinition x:Name="FirstSpacer" Width="0" />
+                                                        <ColumnDefinition x:Name="PrimaryColumn" Width="Auto" />
                                                     </Grid.ColumnDefinitions>
                                                     <Button
-                                                        x:Name="PrimaryButton"
-                                                        Content="{TemplateBinding PrimaryButtonText}"
-                                                        IsEnabled="{TemplateBinding IsPrimaryButtonEnabled}"
-                                                        Style="{TemplateBinding PrimaryButtonStyle}"
-                                                        HorizontalAlignment="Stretch" />
+                                                        x:Name="CloseButton"
+                                                        Grid.Column="0"
+                                                        Content="{TemplateBinding CloseButtonContent}"
+                                                        Style="{TemplateBinding CloseButtonStyle}"
+                                                        HorizontalAlignment="Stretch" 
+                                                        VerticalAlignment="Stretch" />
                                                     <Button
                                                         x:Name="SecondaryButton"
-                                                        Content="{TemplateBinding SecondaryButtonText}"
+                                                        Grid.Column="2"
+                                                        Content="{TemplateBinding SecondaryButtonContent}"
                                                         IsEnabled="{TemplateBinding IsSecondaryButtonEnabled}"
                                                         Style="{TemplateBinding SecondaryButtonStyle}"
-                                                        HorizontalAlignment="Stretch" />
+                                                        HorizontalAlignment="Stretch" 
+                                                        VerticalAlignment="Stretch"/>
                                                     <Button
-                                                        x:Name="CloseButton"
+                                                        x:Name="PrimaryButton"
                                                         Grid.Column="4"
-                                                        Content="{TemplateBinding CloseButtonText}"
-                                                        Style="{TemplateBinding CloseButtonStyle}"
-                                                        HorizontalAlignment="Stretch" />
+                                                        Content="{TemplateBinding PrimaryButtonContent}"
+                                                        IsEnabled="{TemplateBinding IsPrimaryButtonEnabled}"
+                                                        Style="{TemplateBinding PrimaryButtonStyle}"
+                                                        HorizontalAlignment="Stretch" 
+                                                        VerticalAlignment="Stretch" />
                                                 </Grid>
                                             </Grid>
                                         </Border>

@@ -32,6 +32,7 @@
     <Thickness x:Key="ComboBoxDropdownBorderThickness">1</Thickness>
     <Thickness x:Key="ComboBoxHeaderThemeMargin">0,0,0,4</Thickness>
     <Thickness x:Key="ComboBoxPopupBorderThemeThickness">2</Thickness>
+    <Thickness x:Key="ComboBoxItemThemeMargin">5,2,5,2</Thickness>
     <Thickness x:Key="ComboBoxItemThemePadding">11,5,11,7</Thickness>
     <Thickness x:Key="ComboBoxItemThemeTouchPadding">11,11,11,13</Thickness>
     <Thickness x:Key="ComboBoxItemThemeGameControllerPadding">11,11,11,13</Thickness>
@@ -45,6 +46,7 @@
     <CornerRadius x:Key="ComboBoxDropDownButtonBackgroundCornerRadius">4</CornerRadius>
     <CornerRadius x:Key="ComboBoxItemCornerRadius">3</CornerRadius>
     <CornerRadius x:Key="ComboBoxItemPillCornerRadius">1.5</CornerRadius>
+    <sys:Boolean x:Key="ComboBoxItemShowPills">False</sys:Boolean>
 
     <FontWeight x:Key="ComboBoxHeaderThemeFontWeight">Normal</FontWeight>
     <FontWeight x:Key="ComboBoxPlaceholderTextThemeFontWeight">350</FontWeight>
@@ -71,7 +73,7 @@
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="primitives:FocusVisualHelper.UseSystemFocusVisuals" Value="True" />
         <Setter Property="primitives:FocusVisualHelper.FocusVisualMargin" Value="-3" />
-        <Setter Property="primitives:ControlHelper.CornerRadius" Value="{StaticResource ComboBoxItemCornerRadius}"/>
+        <Setter Property="primitives:ControlHelper.CornerRadius" Value="{DynamicResource ComboBoxItemCornerRadius}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBoxItem">
@@ -80,7 +82,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        Margin="5,2,5,2"
+                        Margin="{DynamicResource ComboBoxItemThemeMargin}"
                         CornerRadius="{TemplateBinding primitives:ControlHelper.CornerRadius}"
                         SnapsToDevicePixels="True">
 
@@ -167,6 +169,9 @@
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelectedPointerOver}" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedPointerOver}" />
                         </MultiTrigger>
+                        <DataTrigger Binding="{Binding Path=(primitives:ComboBoxHelper.ShowItemPills), RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="False">
+                            <Setter TargetName="Pill" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -280,6 +285,7 @@
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="primitives:ComboBoxHelper.KeepInteriorCornersSquare" Value="True" />
         <Setter Property="primitives:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="primitives:ComboBoxHelper.ShowItemPills" Value="{DynamicResource ComboBoxItemShowPills}"/>
         <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -614,6 +620,10 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
                         </MultiTrigger>
+
+                        <Trigger Property="primitives:ComboBoxHelper.ShowItemPills" Value="False">
+                            <Setter TargetName="Pill" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

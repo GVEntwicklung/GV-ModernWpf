@@ -1272,7 +1272,7 @@
                                 <local:SplitView.Pane>
                                     <Border x:Name="PaneContentGrid"
                                             BorderBrush="{DynamicResource NavigationViewItemSeparatorForeground}"
-                                            BorderThickness="0,0,1,0"
+                                            BorderThickness="{DynamicResource NavigationViewExpandedBorderThickness}"
                                             HorizontalAlignment="Left"
                                             Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.LeftPaneVisibility}">
                                         <Grid>
@@ -1465,7 +1465,7 @@
 
                         <Trigger SourceName="PaneOverlayGroupListener" Property="CurrentStateName" Value="PaneNotOverlaying">
                             <Setter TargetName="RootSplitView" Property="BorderThickness" Value="0" />
-                            <Setter TargetName="PaneContentGrid" Property="BorderThickness" Value="0,0,1,0" />
+                            <Setter TargetName="PaneContentGrid" Property="BorderThickness" Value="{DynamicResource NavigationViewBorderThickness}" />
                             <Setter TargetName="RootSplitView" Property="PaneBackground" Value="{DynamicResource NavigationViewExpandedPaneBackground}" />
                         </Trigger>
 

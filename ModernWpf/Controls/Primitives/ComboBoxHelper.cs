@@ -3,7 +3,6 @@
 
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace ModernWpf.Controls.Primitives
 {
@@ -19,6 +18,36 @@ namespace ModernWpf.Controls.Primitives
 
         internal ComboBoxHelper()
         {
+        }
+
+        /// <summary>
+        /// Identifies the ShowItemPills dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShowItemPillsProperty =
+            DependencyProperty.RegisterAttached(
+                "ShowItemPills",
+                typeof(bool),
+                typeof(ComboBoxHelper),
+                new PropertyMetadata(true));
+
+        /// <summary>
+        /// Gets whether the selected ComboBox item pill should be visible.
+        /// </summary>
+        /// <param name="comboBox">The element from which to read the property value.</param>
+        /// <returns>Whether the selected ComboBox item pill should be visible.</returns>
+        public static bool GetShowItemPills(ComboBox comboBox)
+        {
+            return (bool)comboBox.GetValue(ShowItemPillsProperty);
+        }
+
+        /// <summary>
+        /// Sets whether the selected ComboBox item pill should be visible.
+        /// </summary>
+        /// <param name="comboBox">The element on which to set the attached property.</param>
+        /// <param name="value">The property value to set.</param>
+        public static void SetShowItemPills(ComboBox comboBox, bool value)
+        {
+            comboBox.SetValue(ShowItemPillsProperty, value);
         }
 
         /// <summary>
@@ -154,7 +183,7 @@ namespace ModernWpf.Controls.Primitives
             {
                 if (GetTemplateChild<TextBox>(c_editableTextName, comboBox) is TextBox textBox)
                 {
-                    var popupTop = popupBorder.TranslatePoint(new Point(0,0), textBox);
+                    var popupTop = popupBorder.TranslatePoint(new Point(0, 0), textBox);
                     verticalOffset = popupTop.Y;
                 }
             }
