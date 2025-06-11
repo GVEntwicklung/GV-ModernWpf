@@ -51,26 +51,26 @@
                             </contract7Present:ContentPresenter.BackgroundTransition>
                             -->
                     </local:ContentControlEx>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}" />
@@ -104,26 +104,26 @@
                             </contract7Present:ContentPresenter.BackgroundTransition>
                             -->
                     </local:ContentControlEx>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource AccentButtonBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource AccentButtonForegroundPointerOver}" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource AccentButtonBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource AccentButtonForegroundPressed}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource AccentButtonBackgroundDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource AccentButtonForegroundDisabled}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundPointerOver}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundPointerOver}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundPressed}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundPressed}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundDisabled}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundDisabled}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
     <Style x:Key="TransparentButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
@@ -155,26 +155,26 @@
                             </contract7Present:ContentPresenter.BackgroundTransition>
                             -->
                     </local:ContentControlEx>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource TransparentButtonBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource TransparentButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TransparentButtonForegroundPointerOver}" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource TransparentButtonBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource TransparentButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TransparentButtonForegroundPressed}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ContentPresenter" Property="Background" Value="{DynamicResource TransparentButtonBackgroundDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="BorderBrush" Value="{DynamicResource TransparentButtonBorderBrushDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TransparentButtonForegroundDisabled}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TransparentButtonBackgroundPointerOver}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource TransparentButtonBorderBrushPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource TransparentButtonForegroundPointerOver}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TransparentButtonBackgroundPressed}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource TransparentButtonBorderBrushPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource TransparentButtonForegroundPressed}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource TransparentButtonBackgroundDisabled}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource TransparentButtonBorderBrushDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource TransparentButtonForegroundDisabled}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
