@@ -653,7 +653,7 @@ namespace ModernWpf.Controls
             base.OnKeyDown(e);
         }
 
-        private void Hide(ContentDialogResult result)
+        public void Hide(ContentDialogResult result)
         {
             if (IsShowing)
             {
