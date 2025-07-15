@@ -164,6 +164,85 @@ namespace ModernWpf.Controls.Primitives
 
         #endregion
 
+        #region Icon
+
+        /// <summary>
+        /// Identifies the Icon dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.RegisterAttached(
+                "Icon",
+                typeof(object),
+                typeof(ControlHelper),
+                new FrameworkPropertyMetadata(OnIconChanged));
+
+        /// <summary>
+        /// Gets the content for the control's Icon.
+        /// </summary>
+        /// <param name="control">The element from which to read the property value.</param>
+        /// <returns>The content of the control's Icon. The default is **null**.</returns>
+        public static object GetIcon(Control control)
+        {
+            return control.GetValue(IconProperty);
+        }
+
+        /// <summary>
+        /// Sets the content for the control's Icon.
+        /// </summary>
+        /// <param name="control">The element on which to set the attached property.</param>
+        /// <param name="value">The property value to set.</param>
+        public static void SetIcon(Control control, object value)
+        {
+            control.SetValue(IconProperty, value);
+        }
+
+        private static void OnIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UpdateIconVisibility((Control)d);
+        }
+
+        #endregion
+
+        #region IconVisibility
+
+        private static readonly DependencyPropertyKey IconVisibilityPropertyKey =
+            DependencyProperty.RegisterAttachedReadOnly(
+                "IconVisibility",
+                typeof(Visibility),
+                typeof(ControlHelper),
+                new FrameworkPropertyMetadata(Visibility.Collapsed));
+
+        public static readonly DependencyProperty IconVisibilityProperty =
+            IconVisibilityPropertyKey.DependencyProperty;
+
+        public static Visibility GetIconVisibility(Control control)
+        {
+            return (Visibility)control.GetValue(IconVisibilityProperty);
+        }
+
+        private static void SetIconVisibility(Control control, Visibility value)
+        {
+            control.SetValue(IconVisibilityPropertyKey, value);
+        }
+
+        private static void UpdateIconVisibility(Control control)
+        {
+            Visibility visibility;
+
+            if (GetIcon(control) != null)
+            {
+                visibility = Visibility.Visible;
+            }
+            else
+            {
+                visibility = Visibility.Collapsed;
+            }
+
+            SetIconVisibility(control, visibility);
+        }
+
+        #endregion
+
         #region PlaceholderText
 
         /// <summary>
@@ -343,7 +422,7 @@ namespace ModernWpf.Controls.Primitives
 
         internal static bool IsNullOrEmptyString(object obj)
         {
-            return obj == null || obj is string s && string.IsNullOrEmpty(s);
+            return obj == null || (obj is string s && string.IsNullOrEmpty(s));
         }
     }
 }

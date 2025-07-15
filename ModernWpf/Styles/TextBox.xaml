@@ -102,6 +102,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
@@ -109,7 +110,7 @@
                             x:Name="HeaderContentPresenter"
                             Grid.Row="0"
                             Grid.Column="0"
-                            Grid.ColumnSpan="2"
+                            Grid.ColumnSpan="3"
                             Content="{TemplateBinding primitives:ControlHelper.Header}"
                             ContentTemplate="{TemplateBinding primitives:ControlHelper.HeaderTemplate}"
                             FontWeight="Normal"
@@ -124,7 +125,7 @@
                             Grid.Row="1"
                             Grid.Column="0"
                             Grid.RowSpan="1"
-                            Grid.ColumnSpan="2"
+                            Grid.ColumnSpan="3"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -132,10 +133,17 @@
                             MinWidth="{TemplateBinding MinWidth}"
                             MinHeight="{TemplateBinding MinHeight}"
                             primitives:ValidationHelper.IsTemplateValidationAdornerSite="True" />
+                        <ContentPresenter
+                            x:Name="IconPresenter"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Content="{TemplateBinding primitives:ControlHelper.Icon}"
+                            Visibility="{TemplateBinding primitives:ControlHelper.IconVisibility}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <ScrollViewer
                             x:Name="PART_ContentHost"
                             Grid.Row="1"
-                            Grid.Column="0"
+                            Grid.Column="1"
                             Style="{DynamicResource TextControlContentHostStyle}"
                             HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                             VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
@@ -148,7 +156,7 @@
                         <TextBlock
                             x:Name="PlaceholderTextContentPresenter"
                             Grid.Row="1"
-                            Grid.Column="0"
+                            Grid.Column="1"
                             Grid.ColumnSpan="2"
                             Foreground="{TemplateBinding primitives:ControlHelper.PlaceholderForeground}"
                             Margin="{TemplateBinding BorderThickness}"
@@ -160,7 +168,7 @@
                         <Button
                             x:Name="DeleteButton"
                             Grid.Row="1"
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Focusable="False"
                             Style="{StaticResource DeleteButtonStyle}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -176,7 +184,7 @@
                             x:Name="DescriptionPresenter"
                             Grid.Row="2"
                             Grid.Column="0"
-                            Grid.ColumnSpan="2"
+                            Grid.ColumnSpan="3"
                             Content="{TemplateBinding primitives:ControlHelper.Description}"
                             Visibility="{TemplateBinding primitives:ControlHelper.DescriptionVisibility}"
                             TextElement.Foreground="{DynamicResource SystemControlDescriptionTextForegroundBrush}"
