@@ -53,29 +53,11 @@ namespace ModernWpf.Controls.Primitives
             {
                 if (textBox.GetTemplateChild<ContentControl>("PART_Watermark") is ContentControl watermarkElement)
                 {
-                    var placeholderTextBinding = new Binding
+                    watermarkElement.SetBinding(ContentControl.ContentProperty, new Binding
                     {
                         Path = new PropertyPath(ControlHelper.PlaceholderTextProperty),
                         Source = datePicker
-                    };
-
-                    BindingBase newBinding;
-
-                    var originalBE = watermarkElement.GetBindingExpression(ContentControl.ContentProperty);
-                    if (originalBE != null)
-                    {
-                        newBinding = new MultiBinding
-                        {
-                            Bindings = { placeholderTextBinding, originalBE.ParentBinding },
-                            Converter = _watermarkConverter
-                        };
-                    }
-                    else
-                    {
-                        newBinding = placeholderTextBinding;
-                    }
-
-                    watermarkElement.SetBinding(ContentControl.ContentProperty, newBinding);
+                    });
                 }
             }
         }
