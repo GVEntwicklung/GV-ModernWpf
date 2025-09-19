@@ -187,9 +187,9 @@ namespace ModernWpf.Controls
                 typeof(ContentDialog),
                 new PropertyMetadata(null, OnButtonContentChanged));
 
-        public string SecondaryButtonContent
+        public object SecondaryButtonContent
         {
-            get => (string)GetValue(SecondaryButtonContentProperty);
+            get => GetValue(SecondaryButtonContentProperty);
             set => SetValue(SecondaryButtonContentProperty, value);
         }
 
