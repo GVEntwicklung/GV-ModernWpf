@@ -1,4 +1,4 @@
-﻿<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. See LICENSE in the project root for license information. -->
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. See LICENSE in the project root for license information. -->
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -1533,7 +1533,7 @@
     <!-- Resources for TabView -->
     <m:StaticResource x:Key="TabViewBackground"                                       ResourceKey="SolidBackgroundFillColorBaseBrush" />
     <m:StaticResource x:Key="TabViewItemHeaderBackground"                             ResourceKey="SubtleFillColorTransparentBrush" />
-    <m:StaticResource x:Key="TabViewItemHeaderBackgroundSelected"                     ResourceKey="SolidBackgroundFillColorQuarternary" />
+    <m:StaticResource x:Key="TabViewItemHeaderBackgroundSelected"                     ResourceKey="SolidBackgroundFillColorQuarternaryBrush" />
     <m:StaticResource x:Key="TabViewItemHeaderBackgroundPointerOver"                  ResourceKey="SubtleFillColorSecondaryBrush" />
     <m:StaticResource x:Key="TabViewItemHeaderBackgroundPressed"                      ResourceKey="SubtleFillColorTertiaryBrush" />
     <m:StaticResource x:Key="TabViewItemHeaderBackgroundDisabled"                     ResourceKey="SubtleFillColorTransparentBrush" />
