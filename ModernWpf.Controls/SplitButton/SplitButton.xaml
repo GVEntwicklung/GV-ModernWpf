@@ -1,4 +1,4 @@
-﻿<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. See LICENSE in the project root for license information. -->
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. See LICENSE in the project root for license information. -->
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -94,6 +94,7 @@
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled" />
                                 <VisualState x:Name="FlyoutOpen" />
                                 <VisualState x:Name="TouchPressed" />
                                 <VisualState x:Name="PrimaryPointerOver" />
@@ -138,7 +139,29 @@
                         <Border
                             x:Name="PrimaryBackgroundGrid"
                             Background="{TemplateBinding Background}"
-                            CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
+                            CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource LeftCornerRadiusFilterConverter}}">
+                            <Button
+                                x:Name="PrimaryButton"
+                                Grid.Column="0"
+                                Foreground="{TemplateBinding Foreground}"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="0"
+                                BorderBrush="Transparent"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Command="{TemplateBinding Command}"
+                                CommandParameter="{TemplateBinding CommandParameter}"
+                                CommandTarget="{TemplateBinding CommandTarget}"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                FontWeight="{TemplateBinding FontWeight}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Padding="{TemplateBinding Padding}"
+                                Focusable="False" />
+                        </Border>
 
                         <Grid x:Name="DividerBackgroundGrid"
                             Width="1"
@@ -149,61 +172,39 @@
                             x:Name="SecondaryBackgroundGrid"
                             Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RightCornerRadiusFilterConverter}}"
-                            Grid.Column="2" />
-
+                            Grid.Column="2">
+                            <Button
+                                x:Name="SecondaryButton"
+                                Grid.Column="2"
+                                Foreground="{DynamicResource SplitButtonForegroundSecondary}"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="0"
+                                BorderBrush="Transparent"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Padding="0,0,12,0"
+                                Focusable="False">
+                                <Button.Content>
+                                    <ui:FontIconFallback
+                                        Height="12"
+                                        Width="12"
+                                        FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                        FontSize="8"
+                                        Data="{StaticResource ChevronDownSmall}"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right" />
+                                </Button.Content>
+                            </Button>
+                        </Border>
+                        
                         <Border
                             x:Name="Border"
                             Grid.ColumnSpan="3"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}" />
-
-                        <Button
-                            x:Name="PrimaryButton"
-                            Grid.Column="0"
-                            Foreground="{TemplateBinding Foreground}"
-                            Background="{TemplateBinding Background}"
-                            BorderThickness="0"
-                            BorderBrush="Transparent"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            Command="{TemplateBinding Command}"
-                            CommandParameter="{TemplateBinding CommandParameter}"
-                            CommandTarget="{TemplateBinding CommandTarget}"
-                            FontFamily="{TemplateBinding FontFamily}"
-                            FontSize="{TemplateBinding FontSize}"
-                            FontWeight="{TemplateBinding FontWeight}"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Padding="{TemplateBinding Padding}"
-                            Focusable="False" />
-
-                        <Button
-                            x:Name="SecondaryButton"
-                            Grid.Column="2"
-                            Foreground="{DynamicResource SplitButtonForegroundSecondary}"
-                            Background="{TemplateBinding Background}"
-                            BorderThickness="0"
-                            BorderBrush="Transparent"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Padding="0,0,12,0"
-                            Focusable="False">
-                            <Button.Content>
-                                <ui:FontIconFallback
-                                    Height="12"
-                                    Width="12"
-                                    FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                    FontSize="8"
-                                    Data="{StaticResource ChevronDownSmall}"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Right" />
-                            </Button.Content>
-                        </Button>
                     </Grid>
 
                     <ControlTemplate.Triggers>
@@ -320,10 +321,41 @@
                             <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundChecked}" />
                             <Setter TargetName="DividerBackgroundGrid" Property="Background" Value="{DynamicResource SplitButtonBorderBrushCheckedDivider}"/>
                         </Trigger>
+                        <!-- Disabled -->
+                        <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="Disabled">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushDisabled}" />
+                            <Setter TargetName="PrimaryBackgroundGrid" Property="Background" Value="{DynamicResource SplitButtonBackgroundDisabled}" />
+                            <Setter TargetName="PrimaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundDisabled}" />
+                            <Setter TargetName="SecondaryBackgroundGrid" Property="Background" Value="{DynamicResource SplitButtonBackgroundDisabled}" />
+                            <Setter TargetName="SecondaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundDisabled}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="AccentSplitButtonStyle" TargetType="local:SplitButton" BasedOn="{StaticResource SplitButtonStyle}">
+        <Style.Resources>
+            <ResourceDictionary>
+                <ui:StaticResource x:Key="SplitButtonBackground" ResourceKey="AccentButtonBackground" />
+                <ui:StaticResource x:Key="SplitButtonBackgroundPointerOver" ResourceKey="AccentButtonBackgroundPointerOver" />
+                <ui:StaticResource x:Key="SplitButtonBackgroundPressed" ResourceKey="AccentButtonBackgroundPressed" />
+                <ui:StaticResource x:Key="SplitButtonBackgroundDisabled" ResourceKey="AccentButtonBackgroundDisabled" />
+                <ui:StaticResource x:Key="SplitButtonForeground" ResourceKey="AccentButtonForeground" />
+                <ui:StaticResource x:Key="SplitButtonForegroundPointerOver" ResourceKey="AccentButtonForegroundPointerOver" />
+                <ui:StaticResource x:Key="SplitButtonForegroundPressed" ResourceKey="AccentButtonForegroundPressed" />
+                <ui:StaticResource x:Key="SplitButtonForegroundDisabled" ResourceKey="AccentButtonForegroundDisabled" />
+                <ui:StaticResource x:Key="SplitButtonForegroundSecondary" ResourceKey="AccentButtonForeground" />
+                <ui:StaticResource x:Key="SplitButtonForegroundSecondaryPressed" ResourceKey="AccentButtonForegroundPressed" />
+                <ui:StaticResource x:Key="SplitButtonBorderBrush" ResourceKey="AccentButtonBorderBrush" />
+                <ui:StaticResource x:Key="SplitButtonBorderBrushPointerOver" ResourceKey="AccentButtonBorderBrushPointerOver" />
+                <ui:StaticResource x:Key="SplitButtonBorderBrushPressed" ResourceKey="AccentButtonBorderBrushPressed" />
+                <ui:StaticResource x:Key="SplitButtonBorderBrushDisabled" ResourceKey="AccentButtonBorderBrushDisabled" />
+                <ui:StaticResource x:Key="SplitButtonBorderBrushDivider" ResourceKey="ControlStrokeColorDefaultBrush" />
+            </ResourceDictionary>
+        </Style.Resources>
     </Style>
 
     <Style TargetType="local:SplitButton" BasedOn="{StaticResource SplitButtonStyle}" />

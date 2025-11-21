@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System;
@@ -16,11 +16,12 @@ namespace ModernWpf.Controls
 {
     public class SplitButton : ContentControl, ICommandSource
     {
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(SplitButton));
+        private static readonly ResourceAccessor ResourceAccessor = new(typeof(SplitButton));
 
         static SplitButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SplitButton), new FrameworkPropertyMetadata(typeof(SplitButton)));
+            IsEnabledProperty.OverrideMetadata(typeof(SplitButton), new FrameworkPropertyMetadata(OnVisualPropertyChanged));
         }
 
         public SplitButton()
@@ -248,89 +249,96 @@ namespace ModernWpf.Controls
             }
 
             // change visual state
-            var primaryButton = m_primaryButton;
-            var secondaryButton = m_secondaryButton;
+            Button primaryButton = m_primaryButton;
+            Button secondaryButton = m_secondaryButton;
             if (primaryButton != null && m_secondaryButton != null)
             {
-                if (m_isFlyoutOpen)
+                if (IsEnabled)
                 {
-                    if (InternalIsChecked)
+                    if (m_isFlyoutOpen)
                     {
-                        VisualStateManager.GoToState(this, "CheckedFlyoutOpen", useTransitions);
-                    }
-                    else
-                    {
-                        VisualStateManager.GoToState(this, "FlyoutOpen", useTransitions);
-                    }
-                }
-                // SplitButton and ToggleSplitButton share a template -- this section is driving the checked states for ToggleSplitButton.
-                else if (InternalIsChecked)
-                {
-                    if (m_isKeyDown)
-                    {
-                        if (primaryButton.IsPressed || secondaryButton.IsPressed || m_isKeyDown)
+                        if (InternalIsChecked)
                         {
-                            VisualStateManager.GoToState(this, "CheckedTouchPressed", useTransitions);
+                            VisualStateManager.GoToState(this, "CheckedFlyoutOpen", useTransitions);
+                        }
+                        else
+                        {
+                            VisualStateManager.GoToState(this, "FlyoutOpen", useTransitions);
+                        }
+                    }
+                    // SplitButton and ToggleSplitButton share a template -- this section is driving the checked states for ToggleSplitButton.
+                    else if (InternalIsChecked)
+                    {
+                        if (m_isKeyDown)
+                        {
+                            if (primaryButton.IsPressed || secondaryButton.IsPressed || m_isKeyDown)
+                            {
+                                VisualStateManager.GoToState(this, "CheckedTouchPressed", useTransitions);
+                            }
+                            else
+                            {
+                                VisualStateManager.GoToState(this, "Checked", useTransitions);
+                            }
+                        }
+                        else if (primaryButton.IsPressed)
+                        {
+                            VisualStateManager.GoToState(this, "CheckedPrimaryPressed", useTransitions);
+                        }
+                        else if (primaryButton.IsMouseOver)
+                        {
+                            VisualStateManager.GoToState(this, "CheckedPrimaryPointerOver", useTransitions);
+                        }
+                        else if (secondaryButton.IsPressed)
+                        {
+                            VisualStateManager.GoToState(this, "CheckedSecondaryPressed", useTransitions);
+                        }
+                        else if (secondaryButton.IsMouseOver)
+                        {
+                            VisualStateManager.GoToState(this, "CheckedSecondaryPointerOver", useTransitions);
                         }
                         else
                         {
                             VisualStateManager.GoToState(this, "Checked", useTransitions);
                         }
                     }
-                    else if (primaryButton.IsPressed)
-                    {
-                        VisualStateManager.GoToState(this, "CheckedPrimaryPressed", useTransitions);
-                    }
-                    else if (primaryButton.IsMouseOver)
-                    {
-                        VisualStateManager.GoToState(this, "CheckedPrimaryPointerOver", useTransitions);
-                    }
-                    else if (secondaryButton.IsPressed)
-                    {
-                        VisualStateManager.GoToState(this, "CheckedSecondaryPressed", useTransitions);
-                    }
-                    else if (secondaryButton.IsMouseOver)
-                    {
-                        VisualStateManager.GoToState(this, "CheckedSecondaryPointerOver", useTransitions);
-                    }
                     else
                     {
-                        VisualStateManager.GoToState(this, "Checked", useTransitions);
-                    }
-                }
-                else
-                {
-                    if (m_isKeyDown)
-                    {
-                        if (primaryButton.IsPressed || secondaryButton.IsPressed || m_isKeyDown)
+                        if (m_isKeyDown)
                         {
-                            VisualStateManager.GoToState(this, "TouchPressed", useTransitions);
+                            if (primaryButton.IsPressed || secondaryButton.IsPressed || m_isKeyDown)
+                            {
+                                VisualStateManager.GoToState(this, "TouchPressed", useTransitions);
+                            }
+                            else
+                            {
+                                VisualStateManager.GoToState(this, "Normal", useTransitions);
+                            }
+                        }
+                        else if (primaryButton.IsPressed)
+                        {
+                            VisualStateManager.GoToState(this, "PrimaryPressed", useTransitions);
+                        }
+                        else if (primaryButton.IsMouseOver)
+                        {
+                            VisualStateManager.GoToState(this, "PrimaryPointerOver", useTransitions);
+                        }
+                        else if (secondaryButton.IsPressed)
+                        {
+                            VisualStateManager.GoToState(this, "SecondaryPressed", useTransitions);
+                        }
+                        else if (secondaryButton.IsMouseOver)
+                        {
+                            VisualStateManager.GoToState(this, "SecondaryPointerOver", useTransitions);
                         }
                         else
                         {
                             VisualStateManager.GoToState(this, "Normal", useTransitions);
                         }
                     }
-                    else if (primaryButton.IsPressed)
-                    {
-                        VisualStateManager.GoToState(this, "PrimaryPressed", useTransitions);
-                    }
-                    else if (primaryButton.IsMouseOver)
-                    {
-                        VisualStateManager.GoToState(this, "PrimaryPointerOver", useTransitions);
-                    }
-                    else if (secondaryButton.IsPressed)
-                    {
-                        VisualStateManager.GoToState(this, "SecondaryPressed", useTransitions);
-                    }
-                    else if (secondaryButton.IsMouseOver)
-                    {
-                        VisualStateManager.GoToState(this, "SecondaryPointerOver", useTransitions);
-                    }
-                    else
-                    {
-                        VisualStateManager.GoToState(this, "Normal", useTransitions);
-                    }
+                }
+                else
+                {
+                    VisualStateManager.GoToState(this, "Disabled", useTransitions);
                 }
             }
         }
@@ -339,7 +347,7 @@ namespace ModernWpf.Controls
 
         internal void OpenFlyout()
         {
-            var flyout = Flyout;
+            FlyoutBase flyout = Flyout;
             if (flyout != null)
             {
                 flyout.ShowAt(this);
@@ -348,7 +356,7 @@ namespace ModernWpf.Controls
 
         internal void CloseFlyout()
         {
-            var flyout = Flyout;
+            FlyoutBase flyout = Flyout;
             if (flyout != null)
             {
                 flyout.Hide();
@@ -394,7 +402,7 @@ namespace ModernWpf.Controls
         private void OnSplitButtonKeyDown(object sender, KeyEventArgs args)
         {
             Key key = args.Key;
-            if (key == Key.Space || key == Key.Enter)
+            if (key is Key.Space or Key.Enter)
             {
                 m_isKeyDown = true;
                 UpdateVisualStates();
@@ -404,7 +412,7 @@ namespace ModernWpf.Controls
         private void OnSplitButtonKeyUp(object sender, KeyEventArgs args)
         {
             Key key = args.Key;
-            if (key == Key.Space || key == Key.Enter)
+            if (key is Key.Space or Key.Enter)
             {
                 m_isKeyDown = false;
                 UpdateVisualStates();
@@ -462,7 +470,7 @@ namespace ModernWpf.Controls
         private bool m_isFlyoutOpen;
         private bool m_isKeyDown;
 
-        private readonly CornerRadiusFilterConverter m_cornerRadiusFilterConverter = new CornerRadiusFilterConverter();
+        private readonly CornerRadiusFilterConverter m_cornerRadiusFilterConverter = new();
 
         private class OpenFlyoutCommand : ICommand
         {
