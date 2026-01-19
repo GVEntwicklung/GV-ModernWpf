@@ -369,7 +369,11 @@ namespace ModernWpf.Controls
             // When the control receives focus, select the text
             if (m_textBox != null)
             {
-                m_textBox.SelectAll();
+                if (e.OriginalSource != this)
+                {
+                    m_textBox.SelectAll();
+                    m_textBox.Focus();
+                }
             }
 
             if (SpinButtonPlacementMode == NumberBoxSpinButtonPlacementMode.Compact)
