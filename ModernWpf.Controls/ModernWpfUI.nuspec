@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>$id$</id>
@@ -15,7 +15,7 @@
       <group targetFramework="net5.0-windows10.0.18362.0" />
     </dependencies>
     <frameworkReferences>
-      <group targetFramework="net5.0-windows10.0.18362.0">
+      <group targetFramework="net10.0-windows10.0.26100.0">
         <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
       </group>
     </frameworkReferences>
