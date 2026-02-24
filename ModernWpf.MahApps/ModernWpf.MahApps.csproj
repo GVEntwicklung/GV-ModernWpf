@@ -8,6 +8,7 @@
     <NoWarn>1701;1702;1573;1591</NoWarn>
     <PackageId>ModernWpfUI.MahApps</PackageId>
     <Description>Styles to help integrate ModernWPF with MahApps.Metro.</Description>
+    <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
   <ItemGroup>
