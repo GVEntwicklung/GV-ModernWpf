@@ -26,7 +26,7 @@ namespace ModernWpf.Controls
                 typeof(FontFamily),
                 typeof(FontIcon),
                 new FrameworkPropertyMetadata(
-                    new FontFamily("Segoe MDL2 Assets"),
+                    new FontFamily("Segoe Fluent Icons"),
                     OnFontFamilyChanged));
 
         /// <summary>
