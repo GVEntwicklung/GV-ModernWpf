@@ -31,6 +31,10 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled" />
+        <Setter Property="FrameworkElement.UseLayoutRounding" Value="True" />
         <Setter Property="ContextMenu" Value="{DynamicResource TextControlContextMenu}" />
         <Setter Property="local:TextContextMenu.UsingTextContextMenu" Value="True" />
         <Setter Property="primitives:TextBoxHelper.IsEnabled" Value="True" />
