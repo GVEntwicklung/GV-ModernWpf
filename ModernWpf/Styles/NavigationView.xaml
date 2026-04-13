@@ -37,7 +37,7 @@
     <Thickness x:Key="NavigationViewBorderThickness">0</Thickness>
     <Thickness x:Key="NavigationViewExpandedBorderThickness">0</Thickness>
     <Thickness x:Key="NavigationViewItemBorderThickness">1</Thickness>
-    <Thickness x:Key="NavigationViewItemOnLeftIconBoxMargin">12</Thickness>
+    <Thickness x:Key="NavigationViewItemOnLeftIconBoxMargin">16</Thickness>
     <Thickness x:Key="NavigationViewItemButtonMargin">0</Thickness>
     <Thickness x:Key="NavigationViewItemInnerHeaderMargin">16,0</Thickness>
     <Thickness x:Key="TopNavigationViewItemInnerHeaderMargin">12,0</Thickness>
