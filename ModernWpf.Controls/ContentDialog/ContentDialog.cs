@@ -17,6 +17,7 @@ namespace ModernWpf.Controls
     [TemplatePart(Name = nameof(PrimaryButton), Type = typeof(Button))]
     [TemplatePart(Name = nameof(SecondaryButton), Type = typeof(Button))]
     [TemplatePart(Name = nameof(CloseButton), Type = typeof(Button))]
+    [TemplatePart(Name = nameof(CloseXButton), Type = typeof(Button))]
     [TemplateVisualState(GroupName = DialogShowingStatesGroup, Name = DialogHiddenState)]
     [TemplateVisualState(GroupName = DialogShowingStatesGroup, Name = DialogShowingState)]
     [TemplateVisualState(GroupName = DialogShowingStatesGroup, Name = DialogShowingWithoutSmokeLayerState)]
@@ -409,6 +410,23 @@ namespace ModernWpf.Controls
 
         #endregion
 
+        #region IsCloseXButtonVisible
+
+        public static readonly DependencyProperty IsCloseXButtonVisibleProperty =
+            DependencyProperty.Register(
+                nameof(IsCloseXButtonVisible),
+                typeof(bool),
+                typeof(ContentDialog),
+                new PropertyMetadata(true));
+
+        public bool IsCloseXButtonVisible
+        {
+            get => (bool)GetValue(IsCloseXButtonVisibleProperty);
+            set => SetValue(IsCloseXButtonVisibleProperty, value);
+        }
+
+        #endregion
+
         #region OpenDialog
 
         private static readonly DependencyProperty OpenDialogProperty =
@@ -442,6 +460,8 @@ namespace ModernWpf.Controls
         private Button SecondaryButton { get; set; }
 
         private Button CloseButton { get; set; }
+
+        private Button CloseXButton { get; set; }
 
         private bool IsShowing
         {
@@ -607,6 +627,11 @@ namespace ModernWpf.Controls
                 CloseButton.Click -= OnButtonClick;
             }
 
+            if (CloseXButton != null)
+            {
+                CloseXButton.Click -= OnButtonClick;
+            }
+
             base.OnApplyTemplate();
 
             Container = GetTemplateChild(nameof(Container)) as Border;
@@ -614,6 +639,7 @@ namespace ModernWpf.Controls
             PrimaryButton = GetTemplateChild(nameof(PrimaryButton)) as Button;
             SecondaryButton = GetTemplateChild(nameof(SecondaryButton)) as Button;
             CloseButton = GetTemplateChild(nameof(CloseButton)) as Button;
+            CloseXButton = GetTemplateChild(nameof(CloseXButton)) as Button;
 
             if (LayoutRoot != null)
             {
@@ -635,6 +661,11 @@ namespace ModernWpf.Controls
             if (CloseButton != null)
             {
                 CloseButton.Click += OnButtonClick;
+            }
+
+            if (CloseXButton != null)
+            {
+                CloseXButton.Click += OnButtonClick;
             }
 
 #if DEBUG
@@ -706,6 +737,14 @@ namespace ModernWpf.Controls
                     ContentDialogResult.Secondary);
             }
             else if (sender == CloseButton)
+            {
+                HandleButtonClick(
+                    CloseButtonClick,
+                    CloseButtonCommand,
+                    CloseButtonCommandParameter,
+                    ContentDialogResult.None);
+            }
+            else if (sender == CloseXButton)
             {
                 HandleButtonClick(
                     CloseButtonClick,

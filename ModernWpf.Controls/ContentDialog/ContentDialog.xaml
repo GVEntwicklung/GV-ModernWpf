@@ -323,7 +323,7 @@
                                                         Grid.Column="0"
                                                         Content="{TemplateBinding CloseButtonContent}"
                                                         Style="{TemplateBinding CloseButtonStyle}"
-                                                        HorizontalAlignment="Stretch" 
+                                                        HorizontalAlignment="Stretch"
                                                         VerticalAlignment="Stretch" />
                                                     <Button
                                                         x:Name="SecondaryButton"
@@ -331,7 +331,7 @@
                                                         Content="{TemplateBinding SecondaryButtonContent}"
                                                         IsEnabled="{TemplateBinding IsSecondaryButtonEnabled}"
                                                         Style="{TemplateBinding SecondaryButtonStyle}"
-                                                        HorizontalAlignment="Stretch" 
+                                                        HorizontalAlignment="Stretch"
                                                         VerticalAlignment="Stretch"/>
                                                     <Button
                                                         x:Name="PrimaryButton"
@@ -339,12 +339,46 @@
                                                         Content="{TemplateBinding PrimaryButtonContent}"
                                                         IsEnabled="{TemplateBinding IsPrimaryButtonEnabled}"
                                                         Style="{TemplateBinding PrimaryButtonStyle}"
-                                                        HorizontalAlignment="Stretch" 
+                                                        HorizontalAlignment="Stretch"
                                                         VerticalAlignment="Stretch" />
                                                 </Grid>
                                             </Grid>
                                         </Border>
                                     </ui:BorderEx>
+                                    <Button
+                                        x:Name="CloseXButton"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Width="32"
+                                        Height="32"
+                                        Panel.ZIndex="1"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ToolTip="Schließen">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border
+                                                    x:Name="Bd"
+                                                    Background="{TemplateBinding Background}"
+                                                    CornerRadius="0,0,0,4">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsPressed" Value="True">
+                                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                        <TextBlock
+                                            FontFamily="Segoe MDL2 Assets"
+                                            FontSize="12"
+                                            Text="&#xE8BB;" />
+                                    </Button>
                                 </Grid>
                             </Grid>
                         </Border>
@@ -361,6 +395,9 @@
                         </Trigger>
                         <Trigger Property="DefaultButton" Value="Close">
                             <Setter TargetName="CloseButton" Property="Style" Value="{DynamicResource AccentButtonStyle}" />
+                        </Trigger>
+                        <Trigger Property="IsCloseXButtonVisible" Value="False">
+                            <Setter TargetName="CloseXButton" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
