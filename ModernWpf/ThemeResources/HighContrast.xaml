@@ -1755,4 +1755,18 @@
 
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{StaticResource HighVisibilityFocusVisual}" />
 
+    <!-- InfoBar (High Contrast uses system window colors) -->
+    <SolidColorBrush x:Key="InfoBarInformationalBackground" Color="{x:Static SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="InfoBarInformationalBorderBrush" Color="{x:Static SystemColors.WindowFrameColor}" />
+    <SolidColorBrush x:Key="InfoBarInformationalIconForeground" Color="{x:Static SystemColors.WindowTextColor}" />
+    <SolidColorBrush x:Key="InfoBarSuccessBackground" Color="{x:Static SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="InfoBarSuccessBorderBrush" Color="{x:Static SystemColors.WindowFrameColor}" />
+    <SolidColorBrush x:Key="InfoBarSuccessIconForeground" Color="{x:Static SystemColors.WindowTextColor}" />
+    <SolidColorBrush x:Key="InfoBarWarningBackground" Color="{x:Static SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="InfoBarWarningBorderBrush" Color="{x:Static SystemColors.WindowFrameColor}" />
+    <SolidColorBrush x:Key="InfoBarWarningIconForeground" Color="{x:Static SystemColors.WindowTextColor}" />
+    <SolidColorBrush x:Key="InfoBarErrorBackground" Color="{x:Static SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="InfoBarErrorBorderBrush" Color="{x:Static SystemColors.WindowFrameColor}" />
+    <SolidColorBrush x:Key="InfoBarErrorIconForeground" Color="{x:Static SystemColors.WindowTextColor}" />
+
 </ResourceDictionary>

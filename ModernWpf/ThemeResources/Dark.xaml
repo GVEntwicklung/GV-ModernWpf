@@ -1790,4 +1790,18 @@
 
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{StaticResource HighVisibilityFocusVisual}" />
 
+    <!-- InfoBar -->
+    <SolidColorBrush x:Key="InfoBarInformationalBackground" Color="#1A3249" />
+    <SolidColorBrush x:Key="InfoBarInformationalBorderBrush" Color="#2255A0" />
+    <SolidColorBrush x:Key="InfoBarInformationalIconForeground" Color="#60CDFF" />
+    <SolidColorBrush x:Key="InfoBarSuccessBackground" Color="#0F2E11" />
+    <SolidColorBrush x:Key="InfoBarSuccessBorderBrush" Color="#2D7D2D" />
+    <SolidColorBrush x:Key="InfoBarSuccessIconForeground" Color="#6CCB5F" />
+    <SolidColorBrush x:Key="InfoBarWarningBackground" Color="#302009" />
+    <SolidColorBrush x:Key="InfoBarWarningBorderBrush" Color="#9C7207" />
+    <SolidColorBrush x:Key="InfoBarWarningIconForeground" Color="#FCE100" />
+    <SolidColorBrush x:Key="InfoBarErrorBackground" Color="#3C0808" />
+    <SolidColorBrush x:Key="InfoBarErrorBorderBrush" Color="#A12424" />
+    <SolidColorBrush x:Key="InfoBarErrorIconForeground" Color="#FF99A4" />
+
 </ResourceDictionary>
