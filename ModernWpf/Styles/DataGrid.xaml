@@ -808,7 +808,8 @@
                                         <ScrollContentPresenter
                                             x:Name="PART_ScrollContentPresenter"
                                             Grid.Row="1"
-                                            Grid.ColumnSpan="2"
+                                            Grid.RowSpan="2"
+                                            Grid.ColumnSpan="3"
                                             CanContentScroll="{TemplateBinding CanContentScroll}" />
 
                                         <ScrollBar
