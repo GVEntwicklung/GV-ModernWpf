@@ -625,6 +625,12 @@
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <!-- Zebra-Muster: jede gerade Zeile (AlternationIndex 1) bekommt einen hellgrauen
+                             Hintergrund. Steht bewusst als erster Trigger, damit die nachfolgenden Hover-/
+                             Auswahl-Trigger (die dasselbe BackgroundRectangle einfärben) Vorrang behalten. -->
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter TargetName="BackgroundRectangle" Property="Fill" Value="{DynamicResource DataGridRowAlternatingBackground}" />
+                        </Trigger>
                         <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="MouseOver">
                             <Setter TargetName="BackgroundRectangle" Property="Fill" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
                             <Setter TargetName="BackgroundRectangle" Property="Opacity" Value="{DynamicResource DataGridRowHoveredBackgroundOpacity}" />
