@@ -9,11 +9,9 @@
 
         public double? ParseDouble(string text)
         {
-            if (double.TryParse(text, out double result))
-            {
-                return result;
-            }
-            return null;
+            // Delegiert an den kultur-unabhängigen Parser, damit wissenschaftliche Notation
+            // (z.B. "1,5e-9") und beide Dezimaltrenner immer akzeptiert werden (VisionQM CAQ-352).
+            return NumberBoxTextParser.Parse(text);
         }
     }
 }
