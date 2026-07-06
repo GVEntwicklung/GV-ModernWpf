@@ -431,6 +431,13 @@ namespace ModernWpf.Controls
                         m_blockSelecting = false; // WPF-specific fix to ensure IsChecked is honored
                         Select(args.Index);
                     }
+                    // If SelectedItem/SelectedIndex was set before this element got realized,
+                    // Select() could not check the (not yet existing) toggle button. Apply the
+                    // pending selection now that the container exists.
+                    else if (args.Index == m_selectedIndex)
+                    {
+                        toggleButton.SetCurrentValue(ToggleButton.IsCheckedProperty, true);
+                    }
                 }
                 var repeater = m_repeater;
                 if (repeater != null)
