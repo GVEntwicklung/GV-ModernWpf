@@ -14,7 +14,9 @@
     <sys:Double x:Key="CheckBoxGlyphSize">12</sys:Double>
     <sys:Double x:Key="CheckBoxHeight">32</sys:Double>
     <sys:Double x:Key="CheckBoxMinWidth">120</sys:Double>
-    <Thickness x:Key="CheckBoxPadding">8,5,0,0</Thickness>
+    <!-- CAQ-537: Kein oberer Versatz mehr — die Schrift wird über VerticalContentAlignment
+         mittig zur Box gesetzt, nicht per Padding nach unten geschoben. -->
+    <Thickness x:Key="CheckBoxPadding">8,0,0,0</Thickness>
     <Thickness x:Key="CheckBoxFocusVisualMargin">-7,-3,-7,-3</Thickness>
     <sys:String x:Key="CheckBoxCheckedGlyph">&#xE001;</sys:String>
     <sys:String x:Key="CheckBoxIndeterminateGlyph">&#xE9AE;</sys:String>
@@ -28,7 +30,7 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="MinWidth" Value="{DynamicResource CheckBoxMinWidth}" />
