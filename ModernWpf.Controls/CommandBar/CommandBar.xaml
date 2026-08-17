@@ -344,7 +344,7 @@
                             Background="{TemplateBinding Background}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" MinWidth="{DynamicResource AppBarMoreButtonColumnMinWidth}"/>
+                                <ColumnDefinition x:Name="MoreButtonColumnDefinition" Width="Auto" MinWidth="{DynamicResource AppBarMoreButtonColumnMinWidth}"/>
                             </Grid.ColumnDefinitions>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -458,6 +458,15 @@
                         <Trigger Property="IsDynamicOverflowEnabled" Value="True">
                             <Setter TargetName="ContentControlColumnDefinition" Property="Width" Value="Auto" />
                             <Setter TargetName="PrimaryItemsControlColumnDefinition" Property="Width" Value="*" />
+                        </Trigger>
+                        <!--
+                        Der "..."-Knopf sitzt in einer eigenen Spalte, die per AppBarMoreButtonColumnMinWidth
+                        dauerhaft Platz reserviert. Ist der Knopf collapsed (keine SecondaryCommands, kein
+                        dynamischer Ueberlauf), waere dieser Platz ein toter Rand rechts: die primaeren Befehle
+                        enden dann sichtbar vor der rechten Kante der CommandBar.
+                        -->
+                        <Trigger Property="EffectiveOverflowButtonVisibility" Value="Collapsed">
+                            <Setter TargetName="MoreButtonColumnDefinition" Property="MinWidth" Value="0" />
                         </Trigger>
                         <Trigger Property="IsOverflowOpen" Value="True">
                             <Setter TargetName="OpenBorder" Property="Visibility" Value="Visible" />
