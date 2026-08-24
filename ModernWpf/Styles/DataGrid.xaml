@@ -846,6 +846,14 @@
                                                 Value="{TemplateBinding HorizontalOffset}" />
                                         </Grid>
                                     </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Die horizontale Scrollleiste liegt ueber der letzten Zeile
+                                             (ScrollContentPresenter spannt beide Zeilen). Ist sie sichtbar,
+                                             wird unten ihre Hoehe freigehalten. -->
+                                        <Trigger Property="ComputedHorizontalScrollBarVisibility" Value="Visible">
+                                            <Setter TargetName="PART_ScrollContentPresenter" Property="Margin" Value="0,0,0,12" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </ScrollViewer.Template>
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
