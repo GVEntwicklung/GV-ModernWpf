@@ -853,6 +853,19 @@
                                         <Trigger Property="ComputedHorizontalScrollBarVisibility" Value="Visible">
                                             <Setter TargetName="PART_ScrollContentPresenter" Property="Margin" Value="0,0,0,12" />
                                         </Trigger>
+                                        <!-- CAQ-697: Ebenso liegt die vertikale Scrollleiste ueber der letzten
+                                             Spalte und verdeckte dort z.B. den Loeschen-Button. Ist sie sichtbar,
+                                             wird rechts ihre Breite freigehalten. -->
+                                        <Trigger Property="ComputedVerticalScrollBarVisibility" Value="Visible">
+                                            <Setter TargetName="PART_ScrollContentPresenter" Property="Margin" Value="0,0,12,0" />
+                                        </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="ComputedHorizontalScrollBarVisibility" Value="Visible" />
+                                                <Condition Property="ComputedVerticalScrollBarVisibility" Value="Visible" />
+                                            </MultiTrigger.Conditions>
+                                            <Setter TargetName="PART_ScrollContentPresenter" Property="Margin" Value="0,0,12,12" />
+                                        </MultiTrigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </ScrollViewer.Template>
